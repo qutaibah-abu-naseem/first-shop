@@ -1,0 +1,353 @@
+.dark-circle{
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transform: translate(-50%,-50%);
+   background-color: rgba(124, 120, 120, 0.308);
+   color: rgb(255, 255, 255);
+   position: absolute;
+   top: 50%;
+   left: 50%;
+}
+.light-circle{
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transform: translate(-50%,-50%);
+   background-color: rgba(255, 255, 255, 0.5);
+   color: rgb(255, 255, 255);
+   position: absolute;
+   top: 50%;
+   left: 50%;
+}
+
+body.light{
+    font-family: "Merriweather", serif;
+   background-color: rgb(255, 255, 255);
+}
+header{
+   position: fixed;
+   z-index: 30;
+   top: 0;
+}
+body.dark{
+   font-family: "Merriweather", serif;
+   background: linear-gradient(#8e8989,#151414);
+}
+body.login{
+   font-family: "Merriweather", serif;
+   background-image: url(/public/img/back-log.jpg);
+   background-size: cover;
+   background-repeat: no-repeat;
+}
+
+.main-light{
+   font-family: "Merriweather", serif;
+   height: 120vh;
+   background-image: url(C:\Users\DELL\Desktop\react\expreince\public\img\back-light.jpg);
+   background-size: cover;
+   border-bottom:1px solid black;
+   padding-top: 120px;
+}
+.main-dark{
+   width: 100%;
+   height: 110vh;
+   background-image: url(C:\Users\DELL\Desktop\react\expreince\public\img\back-dark.jpg);
+   background-size: 100%  110%;
+   background-repeat: no-repeat;
+   border-bottom:1px solid black;
+}
+#parent-list-header{
+    padding-top: 20px;
+}
+ #parent-list-header ul li{
+    margin-right: 30px;
+    font-size: 16px;
+    text-transform: capitalize;
+   
+ }
+ #parent-search{
+   height: 35px;
+   margin-top: -10px;
+ }
+ #parent-search input{
+    height:100%;
+    cursor: pointer;
+    border-radius: 10px;
+    outline: none;
+ }
+#parent-service ul li{
+   position: relative;
+   width: 40px;
+   height: 40px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+ #parent-icon{
+ width: 100%;
+ height: 100%;
+ display: flex;
+ align-items: center;
+ position: relative;
+ }
+ #parent-icon button #overly-mode{
+   border-radius: 50%;
+   position: absolute;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  
+ }
+ #parent-icon button:hover #overly-mode{
+  animation-name: zoom;
+  animation-duration: 0.3s;
+  animation-fill-mode:forwards;
+ }
+ @keyframes zoom{
+   0%{
+      width:0;
+      height:0;
+
+   }
+ 
+   100%{
+      width: 32px;
+      height: 32px;
+      scale: 1.1;
+   }
+ }
+ #parent-icon-cart{
+   position: absolute;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ main{
+   width: 100%;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-top: 40px;
+}
+main #container-main{
+   width: 90%;
+   height: 100vh;
+   padding: 10px;
+   display: flex;
+}
+.container{
+   width: 90%;
+   height:auto;
+   padding: 10px;
+   margin: 50px auto;
+}
+.container-log{
+   width: 90%;
+   height:100vh;
+   padding: 10px;
+   margin: 20px auto;
+   display: flex;
+   align-items:center;
+   justify-content:space-between;
+   background-color: #ffffff1f;
+   border-radius: 30px;
+   position: relative;
+}
+.img5{
+   width: 350px;
+   height: 300px;
+   background-image: url(/public/img/img5.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   border: 1px solid white;
+   margin-top: 20px;
+}
+.img1{
+   width: 350px;
+   height: 300px;
+   background-image: url(/public/img/img1.jpg);
+   background-repeat: no-repeat;
+   background-size:cover;
+   border: 1px solid white;
+   margin-top: 20px;
+}
+.img2{
+   width:700px;
+   height: 400px;
+   background-image: url(/public/img/img2.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   border: 1px solid white;
+   margin:80px;
+}
+#side{
+   color: white;
+   transition: 0.5s ease;
+}
+#container-main #side:hover{
+   color: rgb(0, 86, 245);
+   text-shadow: 5px 2px 5px  black;
+}
+#product-sec{
+  width: 100%;
+   margin-top: 50px;
+}
+.css-1kuwa16-MuiCardMedia-root{
+   height: 300px;
+}
+.button-dark{
+   width: 80px;
+   height: 35px;
+   background-color: #151414;
+   color: white;
+   border-radius: 30px;
+   margin: -50px 30px;
+}
+.button-dark:hover{
+   background-color: #312e2e;
+}
+#more{
+   height: 100%;
+   background:linear-gradient(rgb(0, 0, 0),rgb(56, 54, 54));
+   position: absolute;
+   right:0;
+   top: 0;
+   display: flex;
+   align-items: center;
+   color: white;
+   cursor: pointer;
+   width: 10px !important;
+}
+
+#mode2{
+   width: 500px;
+   height: 400px !important;
+   display:grid;
+   grid-template-columns: repeat(2,50%);
+   transition: 0.5s;
+}
+ 
+a{
+   text-decoration: none !important;
+}
+#form-log{
+   width: 450px;
+   height:fit-content;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: start;
+   background-color: #4e003d77;
+   backdrop-filter: blur(5px);
+   border: 1px solid white;
+}
+#form-log  input{
+   width: 100%;
+   height: 50px;
+   margin-top: 10px;
+   background-color: #7906606b;
+   border: 1px solid rgb(241, 238, 238);
+   border-radius: 30px;
+   transition: 0.3s;
+   outline: none;
+   color: white;
+   padding-left: 50px;
+   font-size: 18px;
+}
+#form-log input:hover{
+   background-color: #bb82af6b;
+}
+#form-log input:focus{
+   background-color: #ffffff;
+   color: #151414;
+}
+
+
+#form-sign{
+   width: 450px;
+   height:fit-content;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: start;
+   background-color: #4e003d77;
+   backdrop-filter: blur(5px);
+   border: 1px solid white;
+
+}
+
+#form-sign  input{
+   width: 100%;
+   height: 50px;
+   margin-top: 10px;
+   background-color: #7906606b;
+   border: 1px solid rgb(241, 238, 238);
+   border-radius: 30px;
+   transition: 0.3s;
+   outline: none;
+   color: white;
+   padding-left: 50px;
+   font-size: 18px;
+  
+}
+#form-sign input:hover{
+   background-color: #bb82af6b;
+}
+#form-sign input:focus{
+   background-color: #ffffff;
+   color: #151414;
+}
+
+#card #overly-card{
+   border-radius: 10px;
+   top:0 !important;
+   opacity:0;
+   transition: 0.5s ease-in-out !important;
+}
+#card #overly-card:hover{
+   opacity: 1;
+} 
+
+
+.focus{
+   color: hsl(210, 100%, 65%) !important;
+   border-bottom: 1px solid white;
+}
+#warper{
+   width: 90%;
+   margin-left: 75px;
+   min-height: auto;
+   display: flex; /* Align items in a single row */
+   overflow-x: auto; /* Enable horizontal scrolling */
+   overflow-y: hidden;
+   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+   scroll-behavior: smooth; /* Smooth scrolling for other devices */
+   gap: 30px; /* Space between slides */
+}
+#side{
+   flex-shrink: 0;
+   width:calc(94%/3) ;/* Fixed width for each slide */
+   height: 400px; /* Fixed height for consistency */
+   border-radius: 8px; /* Rounded corners for slides */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+  }
+  #long-menu{
+   height: 180px;
+   width:300px;
+   overflow-y: auto  !important;
+   scrollbar-width: none;
+  }
+  .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper{
+   width: 300px;
+   left:335%  !important;
+   top:130px !important;
+  }

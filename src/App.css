@@ -58,7 +58,7 @@ body.login{
 .main-dark{
    width: 100%;
    height: 110vh;
-   background-image: url(C:\Users\DELL\Desktop\react\expreince\public\img\back-dark.jpg);
+   background-image: url(/public/img/back-dark.jpg);
    background-size: 100%  110%;
    background-repeat: no-repeat;
    border-bottom:1px solid black;

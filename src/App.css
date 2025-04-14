@@ -50,7 +50,7 @@ body.login{
 .main-light{
    font-family: "Merriweather", serif;
    height: 120vh;
-   background-image: url(C:\Users\DELL\Desktop\react\expreince\public\img\back-light.jpg);
+   background-image: url(/img/back-light.jpg);
    background-size: cover;
    border-bottom:1px solid black;
    padding-top: 120px;

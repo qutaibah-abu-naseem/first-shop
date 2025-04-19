@@ -12,6 +12,8 @@
    top: 50%;
    left: 50%;
 }
+
+
 .light-circle{
    width: 30px;
    height: 30px;
@@ -323,15 +325,11 @@ a{
    border-bottom: 1px solid white;
 }
 #warper{
-   width: 90%;
-   margin-left: 75px;
+ 
    min-height: auto;
-   display: flex; /* Align items in a single row */
-   overflow-x: auto; /* Enable horizontal scrolling */
    overflow-y: hidden;
-   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-   scroll-behavior: smooth; /* Smooth scrolling for other devices */
-   gap: 30px; /* Space between slides */
+   scrollbar-width: none;
+ 
 }
 #side{
    flex-shrink: 0;
@@ -351,3 +349,4 @@ a{
    left:335%  !important;
    top:130px !important;
   }
+  

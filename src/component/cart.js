@@ -87,7 +87,7 @@ const Item = ({ title, desc, color, rating, price, date, img, id }) => {
   return (
     <Card 
      onClick={()=>console.log(id)}
-      className='ms-3 mb-5 position-relative pb-3' 
+      className='mb-5 position-relative pb-3' 
       sx={{
         width: 300,
         color: context.dark ? 'white' : 'black',
@@ -99,10 +99,9 @@ const Item = ({ title, desc, color, rating, price, date, img, id }) => {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
           image={img}
           alt={title}
-          style={{cursor:'default'}}
+          style={{cursor:'default',height:'300px'}}
         />
         <p className='position-absolute end-4 top-2 text-2xl text-sktop-8' style={{display:context.path?'none':'block'}}>
           {currentProduct && currentProduct.heart ? (

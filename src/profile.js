@@ -10,8 +10,10 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import { api } from './App';
 
 const Profile=()=> {
+  const context=React.useContext(api)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -22,7 +24,7 @@ const Profile=()=> {
   };
   return (
     <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center',padding:'0 20px' }}>
+      <Box sx={{ display: 'flex',marginTop:'-15px', textAlign: 'center',padding:'0 20px'}}>
        
         <Tooltip title="Account settings" className='d-flex items-center gap-2'>
           <IconButton
@@ -35,7 +37,7 @@ const Profile=()=> {
           >
             <Avatar sx={{ width: 32, height: 32,textTransform:'capitalize' }}>{localStorage.getItem('name')?localStorage.getItem('name')[0]:''}</Avatar>
           </IconButton>
-          <h6 className='mt-1 text-sky-700' style={{textTransform:'capitalize'}}>{localStorage.getItem('name')?localStorage.getItem('name'):''}</h6>
+          <h6 className='mt-1' style={{textTransform:'capitalize',color:context.dark?'rgb(95, 214, 250)':'rgb(2, 87, 112)'}}>{localStorage.getItem('name')?localStorage.getItem('name'):''}</h6>
         </Tooltip>
       </Box>
       <Menu

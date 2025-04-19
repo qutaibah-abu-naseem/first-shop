@@ -10,6 +10,7 @@ import Time from "./time";
 import Footer from "./component/footer";
 import Addpage from "./component/addpage";
 import Choosen from "./component/choosenproduct";
+import Down_header from "./down-header";
 export const api = createContext(null)
 
 const Appwarper=()=>{
@@ -325,6 +326,7 @@ function App() {
           <Route path="/signup" element={<Sign_up />} />
           <Route path="time" element={<Time />} />
         </Routes>
+        <Down_header/>
         <Footer/>
      
     </api.Provider>

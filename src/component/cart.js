@@ -9,6 +9,8 @@ import CardActionArea from '@mui/material/CardActionArea';
 import { IoIosStar } from "react-icons/io";
 import { api } from '../App';
 import { Button} from '@mui/material';
+import Addbtn from './addbtn';
+import Rmvbtn from './rmvbtn';
 
 const Item = ({ title, desc, color, rating, price, date, img, id }) => {
   const context = React.useContext(api);
@@ -56,33 +58,9 @@ const Item = ({ title, desc, color, rating, price, date, img, id }) => {
     window.location.href = '/add';
   };
 
-  const add_to_choosen = () => {
-  //  localStorage.setItem('price',update)
-   context.setproduct(prev=>{
-    const updatedProducts = prev.map((item) =>
-      item.id === id ? { ...item,ischoosen:true,number:1} : item
-    );
-    localStorage.setItem('myproduct', JSON.stringify(updatedProducts));
-    return updatedProducts
-  })
-
-  localStorage.setItem('choosen', JSON.stringify(JSON.parse(localStorage.getItem('myproduct')).filter(item=>item.ischoosen==true)));
-};
  
  
- const delete_from_choosen=()=>{
-
-
-  context.setproduct(prev=>{
-    const updatedProducts = prev.map((item) =>
-      item.id === id ? { ...item,ischoosen:false} : item
-    );
-    localStorage.setItem('myproduct', JSON.stringify(updatedProducts));
-    localStorage.setItem('choosen', JSON.stringify(JSON.parse(localStorage.getItem('myproduct')).filter(item=>item.ischoosen==true)));
-    return updatedProducts
-  })
- }
-
+ 
 
   return (
     <Card 
@@ -101,6 +79,7 @@ const Item = ({ title, desc, color, rating, price, date, img, id }) => {
           component="img"
           image={img}
           alt={title}
+          loading='lazy'
           style={{cursor:'default',height:'300px'}}
         />
         <p className='position-absolute end-4 top-2 text-2xl text-sktop-8' style={{display:context.path?'none':'block'}}>
@@ -110,7 +89,7 @@ const Item = ({ title, desc, color, rating, price, date, img, id }) => {
                 e.stopPropagation(); // لمنع تفعيل الحدث الخاص بالبطاقة
                 Deletfavor();
               }}
-              class3Name='text-red-600'
+              className='text-sky-600'
               style={{ cursor: 'pointer' }}
             />
           ) : (
@@ -142,9 +121,8 @@ const Item = ({ title, desc, color, rating, price, date, img, id }) => {
         </div>
         <div className='w-[auto] h-[45px]'>
           {currentProduct&&currentProduct.ischoosen?
-             <Button  onClick={delete_from_choosen} sx={{backgroundColor:'rgb(2, 72, 138)',fontSize:'10px',color:'white',width:'auto',position:'absolute',marginLeft:'150px'}}>delete from cart</Button>
-            : <Button onClick={add_to_choosen} sx={{backgroundColor:'rgb(2, 72, 138)',fontSize:'10px',color:'white',width:'auto',position:'absolute',marginLeft:'170px'}}>add to cart</Button>
-             }
+            <Addbtn id={id}/>
+            :<Rmvbtn  id={id}/>}
         </div>
       </div>
     </Card>

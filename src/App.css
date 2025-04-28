@@ -50,18 +50,15 @@ body.login{
 }
 
 .main-light{
-   font-family: "Merriweather", serif;
    height: 120vh;
-   background-image: url(/public/img/back-light.jpg);
-   background-size: cover;
    border-bottom:1px solid black;
    padding-top: 120px;
 }
 .main-dark{
    width: 100%;
    height: 110vh;
-   background-image: url(/public/img/back-dark.jpg);
    background-size: 100%  110%;
+   background-color: #151414;
    background-repeat: no-repeat;
    border-bottom:1px solid black;
 }
@@ -164,33 +161,8 @@ main #container-main{
    border-radius: 30px;
    position: relative;
 }
-.img5{
-   width: 350px;
-   height: 300px;
-   background-image: url(/public/img/img5.jpg);
-   background-repeat: no-repeat;
-   background-size: cover;
-   border: 1px solid white;
-   margin-top: 20px;
-}
-.img1{
-   width: 350px;
-   height: 300px;
-   background-image: url(/public/img/img1.jpg);
-   background-repeat: no-repeat;
-   background-size:cover;
-   border: 1px solid white;
-   margin-top: 20px;
-}
-.img2{
-   width:700px;
-   height: 400px;
-   background-image: url(/public/img/img2.jpg);
-   background-repeat: no-repeat;
-   background-size: cover;
-   border: 1px solid white;
-   margin:80px;
-}
+
+
 #side{
    color: white;
    transition: 0.5s ease;

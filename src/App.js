@@ -6,7 +6,6 @@ import Header from "./component/header";
 import Login from "./component/login";
 import Face_page from "./face_page";
 import Sign_up from "./component/signup";
-import Time from "./time";
 import Footer from "./component/footer";
 import Addpage from "./component/addpage";
 import Choosen from "./component/choosenproduct";
@@ -324,7 +323,7 @@ function App() {
           <Route path="/add" element={<Addpage />} />
           <Route path="/choosen" element={<Choosen />} />
           <Route path="/signup" element={<Sign_up />} />
-          <Route path="time" element={<Time />} />
+         
         </Routes>
         <Down_header/>
         <Footer/>

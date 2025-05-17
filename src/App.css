@@ -305,10 +305,10 @@ a{
 }
 #side{
    flex-shrink: 0;
-   width:calc(94%/3) ;/* Fixed width for each slide */
-   height: 400px; /* Fixed height for consistency */
-   border-radius: 8px; /* Rounded corners for slides */
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+   width:calc(94%/3) ;
+   height: 400px; 
+   border-radius: 8px; 
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   }
   #long-menu{
    height: 180px;

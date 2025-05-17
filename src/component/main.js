@@ -1,11 +1,10 @@
 import { useContext} from "react"
 import { useEffect } from "react";
 import { api } from "../App";
-import { motion } from "framer-motion";
 import { Typography } from "@mui/material";
-import About from "./about";
-import Feature from "./feature";
 import Ourproduct from "./outproduct";
+import Offers from "./offers";
+import Item from "./cart";
 const Main = () => {
 
  
@@ -37,10 +36,15 @@ const Main = () => {
 
         </div>
       </main>
-      <About/>
-      <motion.div initial={{ width: '0' }} transition={{ type: 'spring', damping: 20 }} whileInView={{ width: '100%', backgroundColor: 'rgb(166, 174, 176)' }} className="h-[10px]  mb-3 rounded-3"></motion.div>
-      <Feature/>
+      <Offers/>
       <Ourproduct/>
+       <div className="my-5 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 place-items-center min-h-screen">
+         {
+               context.product.map(item=>(
+                        <Item title={item.title} img={item.img} isheart={item.heart}  desc={item.desc} color={item.color} price={item.price}  id={item.id}  rating={item.rating} key={item.id}/>
+                    ))
+                }
+       </div>
     </div>
   )
 }

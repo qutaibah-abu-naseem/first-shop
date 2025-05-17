@@ -6,13 +6,11 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { IoBagHandleSharp } from "react-icons/io5";
 import RemoveIcon from '@mui/icons-material/Remove';
-import MailIcon from '@mui/icons-material/Mail';
 import { api } from '../App';
 import { useContext } from 'react';
-import Item from './cart';
 
 
-const My_badge=({counter,id,price})=> {
+const My_badge=({counter,id})=> {
       const context=useContext(api)
   const [invisible, setInvisible] = React.useState(false);
 

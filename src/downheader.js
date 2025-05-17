@@ -2,7 +2,7 @@ import  React,{ useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { api } from './App'
-const Down_header = () => {
+const DownHeader = () => {
      const context = useContext(api)
     return (
         <div id="down-header" className="w-100 position-fixed z-[20] sm:hidden bottom-0 h-[70px]"   style={{
@@ -24,4 +24,4 @@ const Down_header = () => {
     )
 }
 
-export default Down_header
+export default DownHeader

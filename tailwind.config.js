@@ -1,18 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // تأكد من تضمين ملفات React
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  purge: ['./src/**/*.html', './src/**/*.js'],
+  darkMode: 'class', // يمكنك استخدام 'media' أو 'class'
   theme: {
     extend: {},
   },
-  plugins: [
-    require('tailwindcss'),
-    require('autoprefixer'),
-    require('cssnano')({
-      preset: 'default',
-    }),
-  ],
+  plugins: [],
 };
-

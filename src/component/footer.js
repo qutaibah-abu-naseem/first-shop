@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Grid, Typography, TextField, Button, Box, IconButton } from "@mui/material";
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import { api } from "../App";
 
 const Footer = () => {
+  const context=useContext(api)
   return (
     <Box sx={{ backgroundColor: "#222", color: "white", padding: "40px 0" }}>
       <Container>
@@ -19,9 +22,11 @@ const Footer = () => {
           <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h6">Important Links</Typography>
             <Typography variant="body2">- Products</Typography>
-            <Typography variant="body2">- Offers</Typography>
-            <Typography variant="body2">- Shipping Policy</Typography>
-            <Typography variant="body2">- Contact Us</Typography>
+            <Typography variant="body2"><Link to={'/'} onClick={()=>{
+              // context.mode_header('main')
+              context.location.pathname==='/'? context.refoffer.current.scrollIntoView({behavior:'smooth'}):context.setismain(true)}} >- offers</Link></Typography>
+            <Typography variant="body2"><Link to={'/aboutus'} onClick={()=>{context.settocontact(false);context.settoabout(true)}}>- about cat shop</Link></Typography>
+            <Typography variant="body2" ><Link to={'/aboutus'} onClick={()=>{context.settocontact(true);context.settoabout(false)}}>- Contact Us</Link></Typography>
           </Grid>
 
           {/* 3. Social Media */}

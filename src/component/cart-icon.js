@@ -24,11 +24,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
           context.setisshow(false)
         }
       }}>
-          <motion.div whileHover={{scale:1.2}}>
+          <div>
           <StyledBadge badgeContent={JSON.parse(localStorage.getItem("choosen")).length} color="secondary">
-          <ShoppingCartIcon  style={{color:context.dark?'':'rgb(228, 228, 228)'}}/>
+          <ShoppingCartIcon sx={{fontSize:'22px',color:{xs:'',md:context.dark?'':'rgb(228, 228, 228)'}}}/>
           </StyledBadge>
-          </motion.div>
+          </div>
       </IconButton>
     );
   }

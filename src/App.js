@@ -1,4 +1,4 @@
-import React, { createContext, lazy, useRef, useEffect, useState } from "react"
+import React, { createContext, lazy, useRef, useEffect, useState, use } from "react"
 import './index.css';
 import './App.css'
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom"
@@ -211,13 +211,14 @@ function App() {
     localStorage.setItem('password', '')
   }
 
+  localStorage.setItem('ismain',JSON.stringify(false))
   const [print, setprint] = useState([])
   const [product, setproduct] = useState(JSON.parse(localStorage.getItem('myproduct')))
   const [search, setsearch] = useState('')
   const [dark, setdark] = useState(false)
   const [hidemain, sethidemain] = useState(false)
   const [showheader, setshowheader] = useState(true)
-  const [mode_header, setmode_header] = useState('main')
+  const [mode_header, setmode_header] = useState('all')
   const [result, setresult] = useState([])
   const [favor, setfavor] = React.useState([])
   const [tocontact, settocontact] = useState(false)
@@ -229,26 +230,25 @@ function App() {
   const [tochoosen, settochoosen] = useState(JSON.parse(localStorage.getItem('myfavo')).length)
   const [isshow, setisshow] = useState(false)
   const [price, setprice] = useState(0)
-  const [ismain,setismain]=useState(false)
-  const [toabout,settoabout]=useState(false)
+  const [showslice,setshowslice]=useState(false)
+  const [ismain, setismain] = useState(false)
+  const [toabout, settoabout] = useState(false)
   const refcontact = useRef(null)
-  const refabout =useRef(null)
-  const refoffer=useRef(null)
-  const refproduct=useRef(null)
+  const refabout = useRef(null)
+  const refoffer = useRef(null)
+  const refproduct = useRef(null)
 
   const location = useLocation()
   useEffect(() => {
     if (window.location.pathname === '/choosen') {
       setshowheader(true)
+    } else if (window.location.pathname === '/' && ismain) {
+      refoffer.current.scrollIntoView({ behavior: 'smooth' })
     }
-    // setismain(false)
+    settoabout(false)
+    settocontact(false)
   }, [location.pathname])
-  useEffect(()=>{
-    if(ismain){
-      refoffer.current.scrollIntoView({behavior:'smooth'})
-      mode_header('main')
-    }
-  },[ismain])
+  
   useEffect(() => {
     setcounter(JSON.parse(localStorage.getItem('choosen')).length)
     setprice(JSON.parse(localStorage.getItem('choosen')).map(item => item.price * item.number).reduce((acc, curr) => acc + curr, 0))
@@ -296,6 +296,8 @@ function App() {
     location,
     setismain,
     refproduct,
+    showslice,
+    setshowslice,
     refoffer,
     tocontact,
     refcontact,

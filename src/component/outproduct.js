@@ -31,12 +31,12 @@ const Ourproduct = () => {
            },
          ]
   return (
-    <section className="h-[auto] ">
-        <h2 className="text-center" style={{ color: context.dark ? 'white' : 'rgb(75, 74, 74)' }}>our products</h2>
+    <section className="h-[auto] my-[150px] ">
+      <h2 className="text-center" style={{ color: context.dark ? 'white' : 'rgb(75, 74, 74)' }}>our product</h2>
 
         <div className="w-[100%]  row  pt-5 gap-2 flex justify-content-center">
           {img_product.map((item) => (
-            <div id="card" key={item.id} className=" col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 position-relative mb-5 shadow-xl">
+            <div id="card" key={item.id} className=" col-xl-3 col-lg-4 col-md-4 col-sm-6 col-10 position-relative mb-5 shadow-xl">
               <img className="h-[280px] w-100 rounded-3" loading='lazy' src={item.url} />
               <div id="overly-card" className="w-[89%] h-100 bg-zinc-900/70 position-absolute">
                 <h5 className="text-light m-3">{item.title}</h5>

@@ -54,7 +54,7 @@ const About_us = () => {
     return (
         <div className='h-[auto] mt-[140px]'>
             <About />
-            <div ref={context.refcontact} className="bg-zinc-800 w-[90%] mx-auto py-5 my-4" style={{ borderRadius: '20px' }}>
+            <div id='contact' ref={context.refcontact} className="bg-zinc-800 w-[90%] mx-auto py-5 my-4" style={{ borderRadius: '20px' }}>
                 <Box sx={{ maxWidth: 600, mx: 'auto', p: 2 }}>
                     <Typography variant="h4" my={2} sx={{ color: 'white', textAlign: 'center' }}>Contact Us</Typography>
                     <form ref={form} onSubmit={sendEmail}>

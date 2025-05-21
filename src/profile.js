@@ -11,6 +11,10 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { api } from './App';
+import { Button } from '@mui/material';
+import { CgDarkMode } from 'react-icons/cg';
+import { GrLanguage } from 'react-icons/gr';
+import Icon_cart from './component/cart-icon';
 
 const Profile=()=> {
   const context=React.useContext(api)
@@ -78,10 +82,54 @@ const Profile=()=> {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
+           <Tooltip title="Account settings" className='d-flex items-center gap-2'>
+          <IconButton
+            onClick={handleClick}
+            size="small"
+           
+            aria-controls={open ? 'account-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+          >
+            <Avatar sx={{ width: 32, height: 32,textTransform:'capitalize' }}>{localStorage.getItem('name')?localStorage.getItem('name')[0]:''}</Avatar>
+          </IconButton>
+          <h6 className='mt-1 text-[20px] hidden' style={{textTransform:'capitalize',color:context.dark?'rgb(95, 214, 250)':'rgb(2, 87, 112)'}}>{localStorage.getItem('name')?localStorage.getItem('name'):''}</h6>
+        </Tooltip>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Avatar /> My account
+           <div className="flex items-center gap-3 me-5 relative ">
+            {/* Dark Mode Toggle */}
+
+             <div className="w-[25px] h-[25px] cursor-pointer  hover:w-[30px] hover:h-[30px] bg-zinc-50 hover:bg-zinc-300 duration-150   flex items-center justify-center rounded-full " >
+               <button
+                onClick={() => context.setdark((prev) => !prev)}
+              >
+                <CgDarkMode 
+                  className="text-xl text-gray-600"
+                />
+              </button>
+              
+             </div>              
+            
+
+            {/* Language Icon */}
+            <div className="w-[25px] h-[25px] cursor-pointer  hover:w-[30px] hover:h-[30px] bg-zinc-50 hover:bg-zinc-300 duration-150   flex items-center justify-center rounded-full " >
+               <button
+                onClick={() => context.setdark((prev) => !prev)}
+              >
+                <GrLanguage
+                  className=" text-lg text-gray-600"
+                />
+              </button>
+            </div>
+
+            {/* Cart */}
+            <div>
+            <div className="w-[25px] h-[25px] cursor-pointer  hover:w-[30px] hover:h-[30px] bg-zinc-50 hover:bg-zinc-300 duration-150   flex items-center justify-center rounded-full " >
+                <Icon_cart />
+              </div>
+            </div>
+          </div>
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>

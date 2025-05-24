@@ -39,9 +39,8 @@ const Menu=()=> {
         context.setisshow(true)
      }else{
        context.setisshow(false)
-       if(window.location.pathname==='/'){
-      }else{
-        window.location.pathname='/'
+       if(window.location.pathname==='/choosen'){
+         window.location.pathname='/'
       }
      }
    
@@ -72,7 +71,7 @@ const Menu=()=> {
         <Divider />
         <Link to='/choosen'>
         <MenuItem sx={{backgroundColor:'rgb(63, 28, 12)',color:'white',transition:'0.5s','&:hover':{backgroundColor:'rgba(63, 28, 12, 0.74)'}}} className=' px-2 py-1 mx-auto my-3 rounded-5 w-[90%] h-[35px]'>
-           <p className=' mx-auto my-auto text-sm'>show all my choosen</p>
+           <button className=' mx-auto my-auto text-sm'>show all my choosen</button>
         </MenuItem>
         </Link>
       </MenuList>

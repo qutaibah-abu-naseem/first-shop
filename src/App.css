@@ -292,7 +292,7 @@ a{
 } 
 
 
-.focus{
+#focus{
    color: hsl(210, 100%, 65%) !important;
    border-bottom: 1px solid white;
 }
@@ -322,3 +322,17 @@ a{
    top:130px !important;
   }
   
+  .scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+ #search{
+   border: 1px solid rgb(37, 37, 37);
+   transition: border ease-in 0.05s;
+ }
+ #search:focus{
+   border: 2px solid rgb(7, 153, 211);
+ }

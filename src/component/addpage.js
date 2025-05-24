@@ -36,10 +36,13 @@ const Addpage = () => {
 
   return (
     <div className='pt-5' style={{ backgroundColor: context.dark ? 'rgb(0,0,0)' : 'rgb(255, 255, 255)', color: context.dark ? 'white' : 'black' }}>
+     
       <div>
         <div className='px-4 pt-[100px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
-
-          <div className='col-span-1 sm:col-span-2 lg:col-span-2'>
+   <div className='min-h-[300px] col-span-1 sm:col-span-2 flex items-center justify-center'>
+            <img src={JSON.parse(localStorage.getItem('active')).img} alt='error' style={{ width: '100%', height: '100%' }} />
+          </div>
+          <div className='col-span-1 sm:col-span-2 lg:col-span-2 '>
             <div className='flex justify-between px-3 py-2'>
               <h4 className='text-sky-500'>{JSON.parse(localStorage.getItem('active')).title}</h4>
               <div className='flex gap-3'>
@@ -50,7 +53,7 @@ const Addpage = () => {
               </div>
             </div>
 
-            <div className='flex justify-between items-center px-3 py-2 h-[70px] mt-5'>
+            <div className='flex flex-wrap justify-between items-center px-3 py-2 h-[70px] mt-5'>
               <div className='flex flex-column gap-4' style={{ color: context.dark ? 'white' : 'rgb(99, 98, 98)' }}>
                 <div className='flex gap-3 text-gray-800'>
                   <div className='bg-yellow-500/75 w-auto text-zinc-900 flex items-center px-2 text-lg h-[30px] rounded-2' style={{ backgroundColor: context.dark ? 'rgb(255, 232, 23)' : 'rgb(204, 184, 1)', color: context.dark ? 'rgb(0,0,0)' : 'rgb(0,0,0)' }}>
@@ -86,20 +89,20 @@ const Addpage = () => {
                     });
                   }
                 }}
-                className='w-full sm:w-[300px] h-[70px] bg-zinc-900 rounded-4 flex hover:bg-zinc-700'
-                style={{ transition: '0.5s' }}>
+                className='w-[200px] sm:w-[300px] h-[50px] sm:h-[70px] bg-zinc-900 rounded-4 flex ms-auto my-3 hover:bg-zinc-700'
+                style={{ transition: '0.5s'}}>
                 <div className='text-light text-xl flex items-center mx-3 my-2'>
                   <GrStatusGood />
-                  <p className='m-2 text-lg'>{JSON.parse(localStorage.getItem('active')).ischoosen ? 'delete item' : 'add to cart'}</p>
+                  <p className='m-2 text-sm sm:text-lg'>{JSON.parse(localStorage.getItem('active')).ischoosen ? 'delete item' : 'add to cart'}</p>
                 </div>
-                <div className='bg-light text-gray-500 h-[60px] px-4 rounded-2 py-1 my-auto ms-[50px] flex flex-column items-center'>total
+                <div className='bg-light text-gray-500 h-[42px] text-sm sm:text-[16px] sm:h-[60px] px-2 sm:px-4 rounded-1 sm:rounded-2 py-1 my-auto me-2 sm:ms-[70px] flex flex-column items-center'>total
                   <p className='text-black'>{JSON.parse(localStorage.getItem('active')).price}$</p>
                 </div>
               </button>
             </div>
 
-            <div className='flex gap-5 mt-[50px] pt-5'>
-              <h5 className='text-lg'>Colors</h5>
+            <div className='flex flex-col  sm:flex-row gap-5 mt-[100px] pt-5'>
+              <h5 className='text-lg mx-auto'>Colors</h5>
               <ul>
                 <li className='flex gap-3'>
                   <p className='w-[30px] h-[30px] bg-gray-600 rounded-full'></p> gray
@@ -124,31 +127,10 @@ const Addpage = () => {
             </div>
           </div>
 
-          <div className='border min-h-[150px] sm:col-span-1 flex items-center justify-center'>
-            <img src={JSON.parse(localStorage.getItem('active')).img} alt='error' style={{ width: '100%', height: '100%' }} />
-          </div>
+          
 
-          <div className='border hover:bg-zinc-300/50 cursor-pointer h-[250px]'>
-            <img src={image} style={{ width: '100%', height: '100%', display: image !== '' ? 'block' : 'none' }} />
-            <Button className='min-h-[150px] w-100' onClick={() => refinpt2.current.click()} style={{ display: image !== '' ? 'none' : 'block' }}>
-              <div className='h-100 flex flex-column pt-2 items-center justify-center'>
-                <h6>drag</h6>
-                <TbRowInsertTop className='text-3xl text-bold my-auto cursor-pointer' />
-                <input type='file' accept="image/*" onChange={handlchange1} className='hidden' ref={refinpt2} />
-              </div>
-            </Button>
-          </div>
 
-          <div className='border hover:bg-zinc-300/50 cursor-pointer'>
-            <img src={image2} style={{ width: '100%', height: '100%', display: image2 !== '' ? 'block' : 'none' }} />
-            <Button className='min-h-[150px] w-100' onClick={() => refinpt.current.click()} style={{ display: image2 !== '' ? 'none' : 'block' }}>
-              <div className='h-100 flex flex-column pt-2 items-center justify-center'>
-                <h6>drag</h6>
-                <TbRowInsertTop className='text-3xl text-bold my-auto cursor-pointer' />
-                <input type='file' accept="image/*" onChange={handlchange2} className='hidden' ref={refinpt} />
-              </div>
-            </Button>
-          </div>
+       
         </div>
       </div>
 

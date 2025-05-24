@@ -1,13 +1,14 @@
-import React, { useContext,useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import { Container, Grid, Typography, TextField, Button, Box, IconButton } from "@mui/material";
-import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
+import { Facebook, Instagram, LinkedIn, Twitter, YouTube } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { api } from "../App";
+import { FaWhatsappSquare } from "react-icons/fa";
 
 const Footer = () => {
-  const context=useContext(api)
-   const location = useLocation();
+  const context = useContext(api)
+  const location = useLocation();
 
   useEffect(() => {
     if (location.hash) {
@@ -32,10 +33,10 @@ const Footer = () => {
           {/* 2. Important Links */}
           <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h6">Important Links</Typography>
-            <Typography variant="body2"><Link to={'/#product'} onClick={()=>context.setmode_header('all')}>- Products</Link></Typography>
-            <Typography variant="body2"><Link to={'/#offer'} >- offers</Link></Typography>
-            <Typography variant="body2"><Link to={'/aboutus#who'}>- about cat shop</Link></Typography>
-            <Typography variant="body2" ><Link to={'/aboutus#contact'}>- Contact Us</Link></Typography>
+            <Typography variant="body2"><Link className="text-sky-100 hover:text-sky-500" to={'/#product'} onClick={() => context.setmode_header('all')}>- Products</Link></Typography>
+            <Typography variant="body2"><Link className="text-sky-100 hover:text-sky-500" to={'/#offer'} >- offers</Link></Typography>
+            <Typography variant="body2"><Link className="text-sky-100 hover:text-sky-500" to={'/aboutus#who'}>- about cat shop</Link></Typography>
+            <Typography variant="body2" ><Link className="text-sky-100 hover:text-sky-500" to={'/aboutus#contact'}>- Contact Us</Link></Typography>
           </Grid>
 
           {/* 3. Social Media */}
@@ -43,16 +44,27 @@ const Footer = () => {
             <Typography variant="h6">Follow Us</Typography>
             <Box sx={{ mt: 1 }}>
               <IconButton color="primary">
-                <Facebook sx={{ color: "white" }} />
+                <Link to='https://web.facebook.com/qutaibh.mohamd?locale=en_GB'>
+                  <Facebook sx={{ color: "white" }} />
+                </Link>
               </IconButton>
               <IconButton color="primary">
-                <Instagram sx={{ color: "white" }} />
+                                <Link to='https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile'>
+                                <LinkedIn sx={{ color: "white" }} />
+                                </Link>
+                
               </IconButton>
               <IconButton color="primary">
-                <Twitter sx={{ color: "white" }} />
+                <Link to='https://x.com/ForWork164313'>
+                 <Twitter sx={{ color: "white" }} />
+                </Link>
+               
               </IconButton>
               <IconButton color="primary">
-                <YouTube sx={{ color: "white" }} />
+                <Link to='https://api.whatsapp.com/send/?phone=962797917763&text&type=phone_number&app_absent=0'>
+                                <FaWhatsappSquare style={{ color: "white" }} />
+
+                </Link>
               </IconButton>
             </Box>
           </Grid>

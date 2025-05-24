@@ -34,14 +34,14 @@ const Profile=()=> {
           <IconButton
             onClick={handleClick}
             size="small"
-            sx={{ ml: 2 }}
+            sx={{ ml: 0 }}
             aria-controls={open ? 'account-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32,textTransform:'capitalize' }}>{localStorage.getItem('name')?localStorage.getItem('name')[0]:''}</Avatar>
+            <Avatar sx={{ width:{xs:28,sm:32} ,height:{xs:28,sm:32},textTransform:'capitalize' }}>{localStorage.getItem('name')?localStorage.getItem('name')[0]:''}</Avatar>
           </IconButton>
-          <h6 className='mt-1' style={{textTransform:'capitalize',color:context.dark?'rgb(95, 214, 250)':'rgb(2, 87, 112)'}}>{localStorage.getItem('name')?localStorage.getItem('name'):''}</h6>
+          <h6 className='mt-1 hidden md:block text-sky-600' style={{textTransform:'capitalize'}}>{localStorage.getItem('name')?localStorage.getItem('name'):''}</h6>
         </Tooltip>
       </Box>
       <Menu
@@ -82,7 +82,7 @@ const Profile=()=> {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-           <Tooltip title="Account settings" className='d-flex items-center gap-2'>
+           <Tooltip title="Account settings" className='d-flex items-center '>
           <IconButton
             onClick={handleClick}
             size="small"
@@ -93,11 +93,11 @@ const Profile=()=> {
           >
             <Avatar sx={{ width: 32, height: 32,textTransform:'capitalize' }}>{localStorage.getItem('name')?localStorage.getItem('name')[0]:''}</Avatar>
           </IconButton>
-          <h6 className='mt-1 text-[20px] hidden' style={{textTransform:'capitalize',color:context.dark?'rgb(95, 214, 250)':'rgb(2, 87, 112)'}}>{localStorage.getItem('name')?localStorage.getItem('name'):''}</h6>
+          <h6 className='mt-2 text-[18px] ' style={{textTransform:'capitalize',color:context.dark?'rgb(95, 214, 250)':'rgb(2, 87, 112)'}}>{localStorage.getItem('name')?localStorage.getItem('name'):''}</h6>
         </Tooltip>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-           <div className="flex items-center gap-3 me-5 relative ">
+           <div className="flex items-center gap-3 me-5 relative  md:hidden">
             {/* Dark Mode Toggle */}
 
              <div className="w-[25px] h-[25px] cursor-pointer  hover:w-[30px] hover:h-[30px] bg-zinc-50 hover:bg-zinc-300 duration-150   flex items-center justify-center rounded-full " >
@@ -126,7 +126,7 @@ const Profile=()=> {
             {/* Cart */}
             <div>
             <div className="w-[25px] h-[25px] cursor-pointer  hover:w-[30px] hover:h-[30px] bg-zinc-50 hover:bg-zinc-300 duration-150   flex items-center justify-center rounded-full " >
-                <Icon_cart />
+                <Icon_cart ismenue={true} />
               </div>
             </div>
           </div>
@@ -144,8 +144,15 @@ const Profile=()=> {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
+        <MenuItem onClick={()=>{
+          handleClose()
+          localStorage.removeItem('email')
+                    localStorage.removeItem('password')
+                              localStorage.removeItem('name')
+
+
+        }}>
+          <ListItemIcon >
             <Logout fontSize="small" />
           </ListItemIcon>
           Logout

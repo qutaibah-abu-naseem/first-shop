@@ -14,7 +14,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
       padding: '0 4px',
     },
   }));
-  const Icon_cart=()=> {
+  const Icon_cart=({ismenue})=> {
         const context=useContext(api)
     return (
       <IconButton aria-label="cart" onClick={()=>{
@@ -26,7 +26,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
       }}>
           <div>
           <StyledBadge badgeContent={JSON.parse(localStorage.getItem("choosen")).length} color="secondary">
-          <ShoppingCartIcon sx={{fontSize:'22px',color:{xs:'',md:context.dark?'':'rgb(228, 228, 228)'}}}/>
+          <ShoppingCartIcon sx={ismenue?{}:{fontSize:'22px',color:context.dark?'':'rgb(228, 228, 228)'}}/>
           </StyledBadge>
           </div>
       </IconButton>

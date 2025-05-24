@@ -1,8 +1,14 @@
-import React, { createContext, lazy, useRef, useEffect, useState, use } from "react"
+import React, { createContext, lazy, useRef, useEffect, useState, Suspense } from "react"
 import './index.css';
 import './App.css'
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom"
 import About_us from "./component/aboutus";
+import Clothe from "./component/pages/clothes";
+import Sport from "./component/pages/sport";
+import Machine from "./component/pages/machine";
+import Model from "./component/pages/model";
+import Product from "./component/product";
+import Favor from "./component/pages/favor";
 // import DownHeader from "./downheader";
 const Login = lazy(() => import('./component/login'))
 const Header = lazy(() => import('./component/header'))
@@ -11,18 +17,10 @@ const Sign_up = lazy(() => import('./component/signup'))
 const Footer = lazy(() => import('./component/footer'))
 const Addpage = lazy(() => import('./component/addpage'))
 const Choosen = lazy(() => import('./component/choosenproduct'))
-const DownHeader = lazy(() => import('./downheader'))
 
 export const api = createContext(null)
 
-const Appwarper = () => {
 
-  return (
-    <Router>
-      <App />
-    </Router>
-  )
-}
 function App() {
   const allproduct = [
     {
@@ -211,14 +209,11 @@ function App() {
     localStorage.setItem('password', '')
   }
 
-  localStorage.setItem('ismain',JSON.stringify(false))
-  const [print, setprint] = useState([])
+  localStorage.setItem('ismain', JSON.stringify(false))
   const [product, setproduct] = useState(JSON.parse(localStorage.getItem('myproduct')))
   const [search, setsearch] = useState('')
   const [dark, setdark] = useState(false)
-  const [hidemain, sethidemain] = useState(false)
   const [showheader, setshowheader] = useState(true)
-  const [mode_header, setmode_header] = useState('all')
   const [result, setresult] = useState([])
   const [favor, setfavor] = React.useState([])
   const [tocontact, settocontact] = useState(false)
@@ -230,8 +225,8 @@ function App() {
   const [tochoosen, settochoosen] = useState(JSON.parse(localStorage.getItem('myfavo')).length)
   const [isshow, setisshow] = useState(false)
   const [price, setprice] = useState(0)
-  const [showslice,setshowslice]=useState(false)
-  const [ismain, setismain] = useState(false)
+  const [showslice, setshowslice] = useState(false)
+  const [section, setsection] = useState('all')
   const [toabout, settoabout] = useState(false)
   const refcontact = useRef(null)
   const refabout = useRef(null)
@@ -242,48 +237,26 @@ function App() {
   useEffect(() => {
     if (window.location.pathname === '/choosen') {
       setshowheader(true)
-    } else if (window.location.pathname === '/' && ismain) {
-      refoffer.current.scrollIntoView({ behavior: 'smooth' })
+    } else if (window.location.pathname === '/login' || window.location.pathname === '/signup') {
+      setshowheader(false)
+      document.body.classList.add("login")
+      document.body.classList.remove("light")
+    } else {
+      setshowheader(true)
+      document.body.classList.add("light")
+      document.body.classList.remove("login")
     }
     settoabout(false)
     settocontact(false)
   }, [location.pathname])
-  
+
   useEffect(() => {
     setcounter(JSON.parse(localStorage.getItem('choosen')).length)
     setprice(JSON.parse(localStorage.getItem('choosen')).map(item => item.price * item.number).reduce((acc, curr) => acc + curr, 0))
     localStorage.setItem('total', price)
   }, [product])
 
-  useEffect(() => {
-    if (dark) {
-      document.body.classList.add("dark")
-      document.body.classList.remove("light")
-    } else {
-      document.body.classList.add("light")
-      document.body.classList.remove("dark")
-    }
-  }, [dark])
 
-  useEffect(() => {
-    if (search.length < 1) {
-      setresult([])
-    } else {
-      if (mode_header === 'all') {
-        if (search.length) {
-          setresult(print.filter(item => item.title.includes(search)))
-        } else {
-          setresult([])
-        }
-      } else if (mode_header === 'clothes') {
-        setresult(product.filter(item => item.title.includes(search)))
-      } else if (mode_header === 'sport') {
-        setresult(product.filter(item => item.title.includes(search)))
-      } else if (mode_header === 'machine') {
-        setresult(product.filter(item => item.title.toLowerCase().includes(search.toLowerCase())))
-      }
-    }
-  }, [search])
 
   useEffect(() => {
     if (active && active.img) {
@@ -292,9 +265,10 @@ function App() {
   }, [active])
 
   const value = {
+    section,
+    setsection,
     refabout,
     location,
-    setismain,
     refproduct,
     showslice,
     setshowslice,
@@ -304,16 +278,10 @@ function App() {
     toabout,
     settoabout,
     settocontact,
-    print,
-    setprint,
     allproduct,
     dark,
     setdark,
     setshowheader,
-    hidemain,
-    sethidemain,
-    mode_header,
-    setmode_header,
     product,
     setproduct,
     search,
@@ -342,24 +310,44 @@ function App() {
   }
   return (
     <api.Provider value={value}>
+      <div className={dark?'dark':''}>
+        {showheader &&
+          <Header />
+        }
+        <Suspense fallback={<>lodaing </>}>
+          <Routes>
+            <Route path="/" element={<Face_page />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/add" element={<Addpage />} />
+            <Route path="/choosen" element={<Choosen />} />
+            <Route path="/favor" element={<Favor />} />
+            <Route path="/signup" element={<Sign_up />} />
+            <Route path="/aboutus" element={<About_us />} />
+            <Route path="/clothes" element={<Clothe />} />
+            <Route path="/sport" element={<Sport />} />
+            <Route path="/machine" element={<Machine />} />
+            <Route path="/model" element={<Model />} />
+            <Route path="/all" element={<Product />} />
+          </Routes>
+        </Suspense>
 
-      {showheader &&
-        <Header />
-      }
-      <Routes>
-        <Route path="/" element={<Face_page />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/add" element={<Addpage />} />
-        <Route path="/choosen" element={<Choosen />} />
-        <Route path="/signup" element={<Sign_up />} />
-        <Route path="/aboutus" element={<About_us />} />
-      </Routes>
-      <DownHeader />
-      <Footer />
+        <Footer />
+
+      </div>
 
     </api.Provider>
 
   );
+}
+const Appwarper = () => {
+
+  return (
+    <Router>
+
+      <App />
+
+    </Router>
+  )
 }
 
 export default Appwarper

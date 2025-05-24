@@ -18,3 +18,10 @@
 #search input:focus{
     border:2px solid rgb(0, 174, 255) !important;
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

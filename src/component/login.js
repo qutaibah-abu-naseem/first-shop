@@ -16,10 +16,8 @@ const Login=()=>{
         password:false })
     const context=useContext(api)
     useEffect(()=>{
-        context.setshowheader(false)
-        document.body.classList.add("login")
-        document.body.classList.remove("light")
-    })
+        
+    },[])
     const Totext=()=>{
         settype('text')
     }

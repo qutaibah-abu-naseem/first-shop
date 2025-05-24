@@ -6,7 +6,7 @@ const Rmvbtn = ({id}) => {
     const context=useContext(api)
 
     const add_to_choosen = () => {
-        //  localStorage.setItem('price',update)
+      if(localStorage.getItem('email')){
          context.setproduct(prev=>{
           const updatedProducts = prev.map((item) =>
             item.id === id ? { ...item,ischoosen:true,number:1} : item
@@ -16,6 +16,10 @@ const Rmvbtn = ({id}) => {
         })
       
         localStorage.setItem('choosen', JSON.stringify(JSON.parse(localStorage.getItem('myproduct')).filter(item=>item.ischoosen==true)));
+      }else{
+        window.location.href='/login'
+      }
+      
       };
        
   return (

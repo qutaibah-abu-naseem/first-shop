@@ -1,15 +1,12 @@
 
-import { FaChevronRight } from "react-icons/fa";
-import { FaChevronLeft } from "react-icons/fa6";
+
 import React, { useEffect, useRef, useState, useContext } from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
-import { IoIosStar } from "react-icons/io";
 import { api } from '../App';
-import Item from "./cart";
 import Badge from "./padage";
 const Choosen = () => {
   const context = useContext(api)
@@ -56,9 +53,7 @@ const Choosen = () => {
   useEffect(() => {
     context.setpath(true)
   },)
-  const handl_mouseup = (e) => {
-
-  }
+  
   return (
     <div className="pt-[170px]">
          <h2 className="text-center my-5" style={{display: JSON.parse(localStorage.getItem('choosen'))?'block':'none'}}> your choosen</h2>
@@ -120,47 +115,6 @@ const Choosen = () => {
 
           </Card>
         ))}
-      </div>
-      <div className="w-[90%] h-[5px] my-4 mx-auto rounded-full" style={{ backgroundColor: context.dark ? 'rgb(247, 247, 247)' : 'rgb(43, 42, 42)' }}></div>
-      <div id='sweaper' className='w-full h-[700px] position-relative' style={{display: JSON.parse(localStorage.getItem('myfavo'))?'block':'none'}}>
-        <h2 className="text-center my-5"> your choosen</h2>
-
-          <p
-            ref={refleft_icon}
-            onClick={scroll_left}
-            className="text-gray-700 z-20 hover:text-gray-900 hover:scale-125 hover:border-gray-900 text-3xl absolute top-1/2 left-2 lg:left-10 sm:left-2 transform-translate-y-1/2 border-2 border-gray-700 rounded-full cursor-pointer transition duration-500"
-          >
-            <FaChevronLeft />
-          </p>
-
-          <div
-
-            className="w-full px-5 flex flex-nowarp gap-5 overflow-x-auto scroll-smooth w-[85%] mx-auto"
-            onMouseMove={handl_mouseup}
-            ref={refwarper}
-          >
-            {
-              JSON.parse(localStorage.getItem('myfavo'))?.map((item) => (
-                <div className="  w-full sm:w-1/2 lg:w-1/3  h-[90%]">
-                  <Item
-                    title={item.title}
-                    img={item.img}
-                    desc={item.desc}
-                    color={item.color}
-                    price={item.price}
-                    rating={item.rating}
-                    id={item.id}
-                  />
-                </div>
-              ))
-            }
-          </div>
-       
-
-
-        <p ref={refright_icon} onClick={scroll_right} className="text-gray-700 z-20 hover:text-gray-900 hover:scale-125   hover:border-gray-900  text-3xl  position-absolute top-50 end-2 lg:end-8 sm:end-3 border-2 border-gray-700 rounded-full cursor-pointer" style={{ transition: '0.5s' }}>
-          <FaChevronRight />
-        </p>
       </div>
     </div>
   )

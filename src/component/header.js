@@ -102,6 +102,9 @@ const Header = () => {
         </div>
 
       </motion.div>
+
+
+
       <div className="w-full h-[40px] bg-zinc-700 dark:bg-zinc-800 flex justify-between px-2">
 
         <div className="  h-[40px]  block sm:hidden ">
@@ -113,7 +116,7 @@ const Header = () => {
           {JSON.parse(localStorage.getItem('myfavo')).length ?
             <div className="w-[25px] h-[25px] mx-2 cursor-pointer hover:w-[30px] hover:h-[30px] hover:bg-zinc-500 duration-150   flex items-center justify-center rounded-full ">
               <Link to='/favor'>
-                <Button>
+                <Button disableRipple>
 
                   <FaHeart
                     className=" text-lg text-gray-100"
@@ -130,6 +133,7 @@ const Header = () => {
           {/* Language Icon */}
           <div className="w-[25px] h-[25px] cursor-pointer hover:w-[30px] hover:h-[30px]  hover:bg-zinc-500 duration-150   flex items-center justify-center rounded-full " >
             <Button
+            disableRipple
               onClick={() => context.setdark((prev) => !prev)}
             >
               <GrLanguage
@@ -152,6 +156,7 @@ const Header = () => {
 
           <div className="w-[25px] h-[25px] cursor-pointer hover:w-[30px] hover:h-[30px] hover:bg-zinc-500 duration-150  flex items-center justify-center rounded-full " >
             <Button
+            disableRipple
               onClick={() => context.setdark((prev) => !prev)}
             >
               <CgDarkMode

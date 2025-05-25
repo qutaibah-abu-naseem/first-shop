@@ -38,17 +38,17 @@ const Header = () => {
           height: '100%',
         }}
       >
-<Link to={'/'} >
-        <div
-          className="flex items-center gap-3"
-        >
-          
-          <img src="/img/logo.png" alt="error" style={{ width: 40, height: 45 }} />
-          <span className="text-[16px] sm:text-[18px] text-zinc-100">cat shop</span>
-         
-          
-        </div>
- </Link>
+        <Link to={'/'} >
+          <div
+            className="flex items-center gap-3"
+          >
+
+            <img src="/img/logo.png" alt="error" style={{ width: 40, height: 45 }} />
+            <span className="text-[16px] sm:text-[18px] text-zinc-100">cat shop</span>
+
+
+          </div>
+        </Link>
 
 
         {/* Search Bar */}
@@ -88,15 +88,17 @@ const Header = () => {
           {localStorage.getItem("email") ? (
             <Profile />
           ) : (
-            <motion.p whileHover={{ scale: 1.1 }}>
-              <Button>
-                <Link to="/login">
+           
+              <Link to="/login">
+                <Button>
+                  <span className="text-zinc-100 hover:text-sky-500 text-sm">login</span>
                   <RiLoginCircleFill
-                    className={context.dark ? "text-light" : "text-black"}
+                    className='text-zinc-100'
                   />
-                </Link>
-              </Button>
-            </motion.p>
+
+                </Button>
+              </Link>
+            
           )}
 
         </div>
@@ -133,7 +135,7 @@ const Header = () => {
           {/* Language Icon */}
           <div className="w-[25px] h-[25px] cursor-pointer hover:w-[30px] hover:h-[30px]  hover:bg-zinc-500 duration-150   flex items-center justify-center rounded-full " >
             <Button
-            disableRipple
+              disableRipple
               onClick={() => context.setdark((prev) => !prev)}
             >
               <GrLanguage
@@ -156,7 +158,7 @@ const Header = () => {
 
           <div className="w-[25px] h-[25px] cursor-pointer hover:w-[30px] hover:h-[30px] hover:bg-zinc-500 duration-150  flex items-center justify-center rounded-full " >
             <Button
-            disableRipple
+              disableRipple
               onClick={() => context.setdark((prev) => !prev)}
             >
               <CgDarkMode

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
@@ -17,77 +16,132 @@ export default function TemporaryDrawer() {
   const context = React.useContext(api);
   const pages = [
     {
-      title: 'all',
-      path: '/all'
+      title: 'All',
+      path: '/All'
     },
     {
-      title: 'clothes',
-      path: '/clothes'
+      title: 'Clothes',
+      path: '/Clothes'
     },
     {
-      title: 'sport',
-      path: '/sport'
+      title: 'Sport',
+      path: '/Sport'
     },
     {
-      title: 'machine',
-      path: '/machine'
+      title: 'Machine',
+      path: '/Machine'
     },
     {
-      title: 'model',
-      path: '/model'
+      title: 'Model',
+      path: '/Model'
     }
   ]
-  React.useEffect(()=>{
-    console.log(context.section)
-  },[context.section])
+
+ const moreLink = [
+   {
+      title: 'Home',
+      path: '/'
+    },
+    {
+      title: 'About us',
+      path: '/aboutus#who'
+    },
+    {
+      title: 'Contact',
+      path: '/aboutus#contact'
+    }
+  ]
+
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
   const Search = (e) => context.setsearch(e.target.value);
-  const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" >
-      <div className="flex gap-3 items-center sm:hidden w-[200px] h-[40px] mx-auto my-3">
-        <button onClick={toggleDrawer(false)} className=" h-[30px] w-[46px] bg-zinc-800 hover:bg-zinc-600 rounded-full   flex items-center justify-center">
-          <IoMdSearch className=" text-gray-100" />
-        </button>
-        <input
-          id='search'
-          className="outline-none h-[40px] rounded-[30px] ps-2 text-sm w-full"
-          onChange={Search}
-          value={context.search}
-          type="text"
-          placeholder='search'
+ const DrawerList = (
+  <Box
+    sx={{
+      width: 250,
+      bgcolor: context.dark ? '#202020' : '#fff',
+      color: context.dark ? '#f1f1f1' : '#2c2b2b',
+      height: '100%',
+    }}
+    role="presentation"
+  >
+    {/* البحث */}
+    <div className="flex gap-3 items-center sm:hidden w-[200px] h-[40px] mx-auto my-3">
+      <button
+        onClick={toggleDrawer(false)}
+        className={`h-[30px] w-[46px] rounded-full flex items-center justify-center ${
+          context.dark ? 'bg-zinc-700 hover:bg-zinc-500' : 'bg-zinc-200 hover:bg-zinc-300'
+        }`}
+      >
+        <IoMdSearch className={`${context.dark ? 'text-white' : 'text-black'}`} />
+      </button>
+      <input
+        id="search"
+        className="outline-none h-[40px] rounded-[30px] ps-2 text-sm w-full"
+        onChange={Search}
+        value={context.search}
+        type="text"
+        placeholder="search"
+        style={{
+          backgroundColor: context.dark ? '#333' : '#f5f5f5',
+          color: context.dark ? '#fff' : '#000',
+        }}
+      />
+    </div>
 
-        />
-      </div>
-      <h5 className='m-2'>Filter</h5>
-      <List onClick={toggleDrawer(false)} >
-        {pages.map((item, index) => (
-          <ListItem key={index} disablePadding>
-            <Link id={context.section===item.title?'focus':''} 
-            onClick={()=>context.setsection(item.title)} 
-            to={item.path} 
-            className='w-full text-gray-700 hover:text-gray-900 '>
-              <ListItemButton>
-                <ListItemText primary={item.title} />
-              </ListItemButton>
-            </Link>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <h5 className='ms-2'>Links</h5>
-      <List>
-        {['about us', 'home', 'contact us'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+    {/* العنوان */}
+    <h5 className="m-2" style={{ color: context.dark ? 'white' : 'black' }}>
+      Filter
+    </h5>
+
+    {/* الروابط */}
+    <List onClick={toggleDrawer(false)}>
+      {pages.map((item, index) => (
+        <ListItem key={index} disablePadding>
+          <Link
+            id={window.location.pathname === item.path ? 'focus' : ''}
+            to={item.path}
+            style={{
+              width: '100%',
+              color: context.dark ? '#f1f1f1' : '#2c2b2b',
+              textDecoration: 'none',
+            }}
+          >
             <ListItemButton>
-              <ListItemText primary={text} />
+              <ListItemText primary={item.title} />
             </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+          </Link>
+        </ListItem>
+      ))}
+    </List>
+
+    <Divider sx={{ bgcolor: context.dark ? '#444' : '#ccc' }} />
+
+    {/* روابط إضافية */}
+    <h5 className="ms-2" style={{ color: context.dark ? '#fff' : '#000' }}>
+      Links
+    </h5>
+    <List>
+      {moreLink.map((ele,index) => (
+        <ListItem key={index} disablePadding>
+          <Link to={ele.path} style={{ width:'100%'}}>
+           <ListItemButton
+            sx={{
+             
+              color: context.dark ? '#f1f1f1' : '#2c2b2b',
+            }}
+          >
+            <ListItemText primary={ele.title} />
+          </ListItemButton>
+          </Link>
+         
+        </ListItem>
+      ))}
+    </List>
+  </Box>
+);
+
 
   return (
     <div>

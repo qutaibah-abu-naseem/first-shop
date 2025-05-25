@@ -26,7 +26,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
       }}>
           <div>
           <StyledBadge badgeContent={JSON.parse(localStorage.getItem("choosen")).length} color="secondary">
-          <ShoppingCartIcon sx={ismenue?{}:{fontSize:'22px',color:context.dark?'':'rgb(228, 228, 228)'}}/>
+          <ShoppingCartIcon sx={ismenue?{}:{fontSize:'22px',color:'rgb(255, 255, 255)'}}/>
           </StyledBadge>
           </div>
       </IconButton>

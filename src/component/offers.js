@@ -52,12 +52,12 @@ const Offers = () => {
       <h2 className="text-center" style={{ color: context.dark ? 'white' : 'rgb(75, 74, 74)' }}>Offers</h2>
       <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-col-1 px-4 gap-5 mt-5 mx-auto" style={{ marginTop: '-20px' }}>
         {features.map((item,index) => (
-          <motion.div key={index} onClick={()=>{context.setmode_header(item.page)}} className=" flex flex-col items-center gap-2 mt-2 shadow-lg rounded-3 p-3" initial={{ y: -100, opacity: 0 }} transition={{ delay: 1, type: 'spring', damping: 20 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} style={{ backgroundColor: context.dark ? 'rgb(22, 21, 21)' : 'white', color: context.dark ? 'white' : 'rgb(75, 74, 74)' }} >
-              <div className="w-[35px] h-[35px] bg-zinc-700 flex items-center justify-content-center text-light rounded-full text-2xl">
+          <motion.div key={index} onClick={()=>{context.setmode_header(item.page)}} className=" flex flex-col items-center gap-2 mt-2 shadow-lg rounded-3 p-3  bg-zinc-200 text-zinc-800 dark:text-zinc-100 dark:bg-zinc-800 " initial={{ y: -100, opacity: 0 }} transition={{ delay: 1, type: 'spring', damping: 20 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }}  >
+              <div className="w-[35px] h-[35px] bg-zinc-700 dark:bg-zinc-100 flex items-center justify-content-center text-light rounded-full text-2xl">
                 <img src={item.img} />
               </div>
 
-            <h6 className="text-dark">{item.title}</h6>
+            <h6 >{item.title}</h6>
           </motion.div>
         ))}
       </div>

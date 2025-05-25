@@ -8,7 +8,7 @@ const Favor = () => {
     
   return (
      <section id="product-sec" className="my-[150px] relative flex flex-col gap-5" style={{ paddingTop: context.mode_header === 'main' ? '0' : '100px' }}>
-           <h1 className='mx-auto'>favority</h1>
+           <h1 className='mx-auto text-zinc-900 dark:text-zinc-100'>favority</h1>
 
             <div id="product" className="grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 place-items-center min-h-screen ">
                 {

@@ -12,7 +12,7 @@ import Favor from "./component/pages/favor";
 // import DownHeader from "./downheader";
 const Login = lazy(() => import('./component/login'))
 const Header = lazy(() => import('./component/header'))
-const Face_page = lazy(() => import('./face_page'))
+const Main = lazy(() => import('./component/main'))
 const Sign_up = lazy(() => import('./component/signup'))
 const Footer = lazy(() => import('./component/footer'))
 const Addpage = lazy(() => import('./component/addpage'))
@@ -23,19 +23,7 @@ export const api = createContext(null)
 
 function App() {
   const allproduct = [
-    {
-      id: 0,
-      title: 'running machane',
-      type: 'machine',
-      type2: 'sport',
-      price: 190,
-      img: '/img/item1.jpg',
-      color: 'black',
-      rating: '4.2',
-      date: '2023/5/14',
-      desc: 'Long-term device',
-      heart: false
-    },
+   
     {
       id: 10,
       title: 'dampl',
@@ -226,12 +214,6 @@ function App() {
   const [isshow, setisshow] = useState(false)
   const [price, setprice] = useState(0)
   const [showslice, setshowslice] = useState(false)
-  const [section, setsection] = useState('all')
-  const [toabout, settoabout] = useState(false)
-  const refcontact = useRef(null)
-  const refabout = useRef(null)
-  const refoffer = useRef(null)
-  const refproduct = useRef(null)
 
   const location = useLocation()
   useEffect(() => {
@@ -246,8 +228,6 @@ function App() {
       document.body.classList.add("light")
       document.body.classList.remove("login")
     }
-    settoabout(false)
-    settocontact(false)
   }, [location.pathname])
 
   useEffect(() => {
@@ -256,8 +236,6 @@ function App() {
     localStorage.setItem('total', price)
   }, [product])
 
-
-
   useEffect(() => {
     if (active && active.img) {
       localStorage.setItem('active', JSON.stringify(active));
@@ -265,19 +243,9 @@ function App() {
   }, [active])
 
   const value = {
-    section,
-    setsection,
-    refabout,
     location,
-    refproduct,
-    showslice,
+     showslice,
     setshowslice,
-    refoffer,
-    tocontact,
-    refcontact,
-    toabout,
-    settoabout,
-    settocontact,
     allproduct,
     dark,
     setdark,
@@ -310,24 +278,24 @@ function App() {
   }
   return (
     <api.Provider value={value}>
-      <div className={dark?'dark':''}>
+      <div className={dark?'dark bg-black':'bg-white'}>
         {showheader &&
           <Header />
         }
         <Suspense fallback={<>lodaing </>}>
           <Routes>
-            <Route path="/" element={<Face_page />} />
+            <Route path="/" element={<Main/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/add" element={<Addpage />} />
             <Route path="/choosen" element={<Choosen />} />
             <Route path="/favor" element={<Favor />} />
             <Route path="/signup" element={<Sign_up />} />
             <Route path="/aboutus" element={<About_us />} />
-            <Route path="/clothes" element={<Clothe />} />
-            <Route path="/sport" element={<Sport />} />
-            <Route path="/machine" element={<Machine />} />
-            <Route path="/model" element={<Model />} />
-            <Route path="/all" element={<Product />} />
+            <Route path="/Clothes" element={<Clothe />} />
+            <Route path="/Sport" element={<Sport />} />
+            <Route path="/Machine" element={<Machine />} />
+            <Route path="/Model" element={<Model />} />
+            <Route path="/All" element={<Product />} />
           </Routes>
         </Suspense>
 

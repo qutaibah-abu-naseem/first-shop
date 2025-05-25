@@ -7,17 +7,12 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { api } from './App';
-import { Button } from '@mui/material';
-import { CgDarkMode } from 'react-icons/cg';
-import { GrLanguage } from 'react-icons/gr';
-import Icon_cart from './component/cart-icon';
+import { Link } from 'react-router-dom';
 
-const Profile=()=> {
-  const context=React.useContext(api)
+const Profile = () => {
+  const context = React.useContext(api)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -28,8 +23,8 @@ const Profile=()=> {
   };
   return (
     <React.Fragment>
-      <Box sx={{ display: 'flex',marginTop:'-15px', textAlign: 'center',padding:'0 20px'}}>
-       
+      <Box sx={{ display: 'flex', marginTop: '-15px', textAlign: 'center', padding: '0 20px' }}>
+      
         <Tooltip title="Account settings" className='d-flex items-center gap-2'>
           <IconButton
             onClick={handleClick}
@@ -39,10 +34,11 @@ const Profile=()=> {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width:{xs:28,sm:32} ,height:{xs:28,sm:32},textTransform:'capitalize' }}>{localStorage.getItem('name')?localStorage.getItem('name')[0]:''}</Avatar>
+            <Avatar sx={{ width: { xs: 28, sm: 32 }, height: { xs: 28, sm: 32 }, textTransform: 'capitalize' }}>{localStorage.getItem('name') ? localStorage.getItem('name')[0] : ''}</Avatar>
           </IconButton>
-          <h6 className='mt-1 hidden md:block text-sky-600' style={{textTransform:'capitalize'}}>{localStorage.getItem('name')?localStorage.getItem('name'):''}</h6>
+          <h6 className='mt-1 hidden md:block text-sky-500' style={{ textTransform: 'capitalize' }}>{localStorage.getItem('name') ? localStorage.getItem('name') : ''}</h6>
         </Tooltip>
+        
       </Box>
       <Menu
         anchorEl={anchorEl}
@@ -54,6 +50,7 @@ const Profile=()=> {
           paper: {
             elevation: 0,
             sx: {
+              backgroundColor:context.dark?'rgb(0,0,0)':'rgb(255, 255, 255)',
               overflow: 'visible',
               filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
               mt: 1.5,
@@ -82,78 +79,31 @@ const Profile=()=> {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-           <Tooltip title="Account settings" className='d-flex items-center '>
-          <IconButton
-            onClick={handleClick}
-            size="small"
-           
-            aria-controls={open ? 'account-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-          >
-            <Avatar sx={{ width: 32, height: 32,textTransform:'capitalize' }}>{localStorage.getItem('name')?localStorage.getItem('name')[0]:''}</Avatar>
-          </IconButton>
-          <h6 className='mt-2 text-[18px] ' style={{textTransform:'capitalize',color:context.dark?'rgb(95, 214, 250)':'rgb(2, 87, 112)'}}>{localStorage.getItem('name')?localStorage.getItem('name'):''}</h6>
-        </Tooltip>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-           <div className="flex items-center gap-3 me-5 relative  md:hidden">
-            {/* Dark Mode Toggle */}
+          <Tooltip title="Account settings" className='d-flex items-center '>
+            <IconButton
+              onClick={handleClick}
+              size="small"
 
-             <div className="w-[25px] h-[25px] cursor-pointer  hover:w-[30px] hover:h-[30px] bg-zinc-50 hover:bg-zinc-300 duration-150   flex items-center justify-center rounded-full " >
-               <button
-                onClick={() => context.setdark((prev) => !prev)}
-              >
-                <CgDarkMode 
-                  className="text-xl text-gray-600"
-                />
-              </button>
-              
-             </div>              
-            
-
-            {/* Language Icon */}
-            <div className="w-[25px] h-[25px] cursor-pointer  hover:w-[30px] hover:h-[30px] bg-zinc-50 hover:bg-zinc-300 duration-150   flex items-center justify-center rounded-full " >
-               <button
-                onClick={() => context.setdark((prev) => !prev)}
-              >
-                <GrLanguage
-                  className=" text-lg text-gray-600"
-                />
-              </button>
-            </div>
-
-            {/* Cart */}
-            <div>
-            <div className="w-[25px] h-[25px] cursor-pointer  hover:w-[30px] hover:h-[30px] bg-zinc-50 hover:bg-zinc-300 duration-150   flex items-center justify-center rounded-full " >
-                <Icon_cart ismenue={true} />
-              </div>
-            </div>
-          </div>
+              aria-controls={open ? 'account-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+            >
+              <Avatar sx={{ width: 32, height: 32, textTransform: 'capitalize' }}>{localStorage.getItem('name') ? localStorage.getItem('name')[0] : ''}</Avatar>
+            </IconButton>
+            <h6 className='mt-2 text-[18px] ' style={{ textTransform: 'capitalize', color: context.dark ? 'rgb(95, 214, 250)' : 'rgb(2, 87, 112)' }}>{localStorage.getItem('name') ? localStorage.getItem('name') : ''}</h6>
+          </Tooltip>
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
-        <MenuItem onClick={()=>{
+        <MenuItem onClick={() => {
           handleClose()
           localStorage.removeItem('email')
-                    localStorage.removeItem('password')
-                              localStorage.removeItem('name')
-
-
-        }}>
+          localStorage.removeItem('password')
+          localStorage.removeItem('name')
+        }}
+        sx={{color: context.dark ? 'rgb(240, 237, 237)' : 'rgb(28, 29, 29)'}}
+        >
           <ListItemIcon >
-            <Logout fontSize="small" />
+            <Logout fontSize="small" sx={{color: context.dark ? 'rgb(240, 237, 237)' : 'rgb(28, 29, 29)'}} />
           </ListItemIcon>
           Logout
         </MenuItem>

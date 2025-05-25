@@ -28,25 +28,27 @@ const Header = () => {
 
 
   return (
-    <header className="w-full h-[60px] bg-zinc-900  fixed z-[100]">
+    <header className="w-full h-[60px]   fixed z-[100]">
 
       <motion.div
         className="flex items-center justify-between dark:bg-zinc-500 text-2xl w-full relative px-2"
         style={{
-          color: context.dark ? "black" : "white",
-          backgroundColor: context.dark ? "white" : "black",
+          color: 'white',
+          backgroundColor: 'rgb(0, 0, 0)',
           height: '100%',
         }}
       >
-
+<Link to={'/'} >
         <div
-          onClick={() => context.setmode_header("main")}
-          className="flex items-center gap-3 cursor-pointer"
+          className="flex items-center gap-3"
         >
+          
           <img src="/img/logo.png" alt="error" style={{ width: 40, height: 45 }} />
-          <span className="text-[16px] sm:text-[18px]">cat shop</span>
+          <span className="text-[16px] sm:text-[18px] text-zinc-100">cat shop</span>
+         
+          
         </div>
-
+ </Link>
 
 
         {/* Search Bar */}
@@ -78,11 +80,11 @@ const Header = () => {
 
         {/* Services */}
 
-     
+
 
         <div className=" pt-3 flex">
-         
-         
+
+
           {localStorage.getItem("email") ? (
             <Profile />
           ) : (
@@ -96,66 +98,72 @@ const Header = () => {
               </Button>
             </motion.p>
           )}
-          
+
         </div>
 
       </motion.div>
-      <div className="w-full h-[40px] bg-zinc-700 flex justify-between px-2">
-       
-    <div className="  h-[40px]  block sm:hidden ">
-            <TemporaryDrawer />
+      <div className="w-full h-[40px] bg-zinc-700 dark:bg-zinc-800 flex justify-between px-2">
+
+        <div className="  h-[40px]  block sm:hidden ">
+          <TemporaryDrawer />
+        </div>
+
+        <div id="services" className="w-[70%] flex justify-around items-center mx-auto gap-3">
+
+          {JSON.parse(localStorage.getItem('myfavo')).length ?
+            <div className="w-[25px] h-[25px] mx-2 cursor-pointer hover:w-[30px] hover:h-[30px] hover:bg-zinc-500 duration-150   flex items-center justify-center rounded-full ">
+              <Link to='/favor'>
+                <Button>
+
+                  <FaHeart
+                    className=" text-lg text-gray-100"
+                  />
+                </Button>
+              </Link>
+
+            </div> : null
+          }
+
+
+
+
+          {/* Language Icon */}
+          <div className="w-[25px] h-[25px] cursor-pointer hover:w-[30px] hover:h-[30px]  hover:bg-zinc-500 duration-150   flex items-center justify-center rounded-full " >
+            <Button
+              onClick={() => context.setdark((prev) => !prev)}
+            >
+              <GrLanguage
+                className="absolute text-lg text-gray-100"
+
+              />
+            </Button>
           </div>
 
-          <div id="services" className="w-[70%] flex justify-around items-center mx-auto gap-3">
-
-
-         
-            <div className="w-[25px] h-[25px] cursor-pointer hover:w-[30px] hover:h-[30px] bg-zinc-700 hover:bg-zinc-500 duration-150  flex items-center justify-center rounded-full " >
-              <Button
-                onClick={() => context.setdark((prev) => !prev)}
-              >
-                <CgDarkMode
-                  className="absolute text-xl"
-                  style={{ color: context.dark ? "rgba(0,0,0,0.9)" : "white" }}
-                />
-              </Button>
-
+          {/* Cart */}
+          <div>
+            <div className="w-[25px] h-[25px] cursor-pointer hover:w-[30px] hover:h-[30px]  hover:bg-zinc-500 duration-150   flex items-center justify-center rounded-full " >
+              <Icon_cart ismenue={false} />
             </div>
+          </div>
 
 
-            {/* Language Icon */}
-            <div className="w-[25px] h-[25px] cursor-pointer hover:w-[30px] hover:h-[30px] bg-zinc-700 hover:bg-zinc-500 duration-150   flex items-center justify-center rounded-full " >
-              <Button
-                onClick={() => context.setdark((prev) => !prev)}
-              >
-                <GrLanguage
-                  className="absolute text-lg"
-                  style={{ color: context.dark ? "rgba(0,0,0,0.9)" : "white" }}
-                />
-              </Button>
-            </div>
 
-            {/* Cart */}
-            <div>
-              <div className="w-[25px] h-[25px] cursor-pointer hover:w-[30px] hover:h-[30px] bg-zinc-700 hover:bg-zinc-500 duration-150   flex items-center justify-center rounded-full " >
-                <Icon_cart ismenue={false} />
-              </div>
-            </div>
-            {JSON.parse(localStorage.getItem('myfavo')).length?
-             <div className="w-[25px] h-[25px] mx-2 cursor-pointer hover:w-[30px] hover:h-[30px] bg-zinc-700 hover:bg-zinc-500 duration-150   flex items-center justify-center rounded-full ">
-              <Button>
-                <Link to='/favor'>
-                <FaHeart
-                  className=" text-lg"
-                  style={{ color: context.dark ? "rgba(0,0,0,0.9)" : "white" }}
-                />
-                </Link>
-                
-              </Button>
-            </div>:null
-            }
-              
-          
+
+
+          <div className="w-[25px] h-[25px] cursor-pointer hover:w-[30px] hover:h-[30px] hover:bg-zinc-500 duration-150  flex items-center justify-center rounded-full " >
+            <Button
+              onClick={() => context.setdark((prev) => !prev)}
+            >
+              <CgDarkMode
+                className="absolute text-xl text-gray-100"
+              />
+            </Button>
+
+          </div>
+
+
+
+
         </div>
 
       </div>

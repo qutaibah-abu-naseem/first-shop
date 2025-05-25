@@ -119,14 +119,14 @@ const Item = ({ title, desc, rating, price, img, id}) => {
 
           <SwiperSlide>
             <div className='h-[300px] w-[100%]  flex items-center justify-center'>
-              <h4 className='text-black'>image #1</h4>
+              <h4 className='text-gray-800 dark:text-gray-100'>image #1</h4>
 
             </div>
           </SwiperSlide>
 
           <SwiperSlide>
             <div className='h-[300px] w-[100%]  flex items-center justify-center'>
-              <h4 className='text-black'>image #2</h4>
+              <h4 className='text-gray-800 dark:text-gray-100'>image #2</h4>
 
             </div>
           </SwiperSlide>
@@ -168,7 +168,7 @@ const Item = ({ title, desc, rating, price, img, id}) => {
                 Addfavor();
               }}
               style={{ cursor: 'pointer' }}
-              className='text-sky-600'
+              className='text-sky-600 dark:text-sky-400'
             />
           )}
           </p>

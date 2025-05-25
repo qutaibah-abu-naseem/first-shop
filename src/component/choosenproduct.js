@@ -10,45 +10,6 @@ import { api } from '../App';
 import Badge from "./padage";
 const Choosen = () => {
   const context = useContext(api)
-  const refwarper = useRef(null)
-  const refleft_icon = useRef(null)
-  const refright_icon = useRef(null)
-  const [diraction, setdiraction] = useState(100)
-
-  const scroll_right = () => {
-
-    setdiraction(prev => prev + 200)
-    if (diraction >= refwarper.current.scrollWidth - refwarper.current.clientWidth) {
-      return setdiraction(refwarper.current.scrollWidth - refwarper.current.clientWidth)
-    }
-
-  }
-  const scroll_left = () => {
-    setdiraction(prev => prev - 200)
-    if (diraction <= 0) {
-      setdiraction(0)
-    }
-  }
-  useEffect(() => {
-    refwarper.current.scrollLeft = diraction
-    if (JSON.parse(localStorage.getItem('myfavo')).length > 3) {
-      if (diraction >= refwarper.current.scrollWidth - refwarper.current.clientWidth) {
-        refright_icon.current.style.display = 'none'
-        refleft_icon.current.style.display = 'block'
-
-      } else if (diraction <= 0) {
-        refleft_icon.current.style.display = 'none'
-        refright_icon.current.style.display = 'block'
-      } else if (diraction > 0 && diraction < refwarper.current.scrollWidth - refwarper.current.clientWidth) {
-        refright_icon.current.style.display = 'block'
-        refleft_icon.current.style.display = 'block'
-      }
-    } else {
-      refright_icon.current.style.display = 'none'
-      refleft_icon.current.style.display = 'none'
-    }
-
-  }, [diraction])
 
   useEffect(() => {
     context.setpath(true)
@@ -57,10 +18,9 @@ const Choosen = () => {
   return (
     <div className="pt-[170px]">
          <h2 className="text-center my-5" style={{display: JSON.parse(localStorage.getItem('choosen'))?'block':'none'}}> your choosen</h2>
-      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 place-items-center min-h-screen">
+      <div className="flex flex-wrap gap-5 mx-auto justify-center w-[90%]  min-h-screen">
         {JSON.parse(localStorage.getItem('choosen')).map(item => (
           <Card
-
             className='ms-3 mb-5 position-relative pb-3'
             sx={{
               width: 300,
